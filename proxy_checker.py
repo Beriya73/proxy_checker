@@ -3,7 +3,7 @@ import sys
 from loguru import logger
 from typing import List
 from src.data_class import ProxyResult
-from src.mixins import sanitize_proxy, console_sanitizer
+from src.mixins import  console_sanitizer
 
 from src.mixins import ProxyChecker, split_results, save_split_results, statistics_output
 
