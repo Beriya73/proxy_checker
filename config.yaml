@@ -1,18 +1,24 @@
 SETTINGS:
     # Количество одновременных потоков для выполнения задач.
     # Это значение определяет, сколько прокси будет проверяться параллельно
+    # The number of concurrent threads to execute tasks.
+    # This value determines how many proxies will be checked in parallel
     REQUESTS: 10
     # Количество повторных попыток для любого сетевого действия в случае ошибок.
+    # Number of retries for any network action in case of errors.
     ATTEMPTS: 2
 
 # Тип прокси
+# Proxy type
 PROXY_TYPE : http # http or socks5
 
 # Путь до прокси
+# Path to proxy
 SOURCE_PROXIES: data/proxies.txt
 OUTPUT_PROXIES: data/proxies_success.txt
 
 #Таймаут для соединений
+#Timeout for connections
 TIMEOUT: 10
 
 
