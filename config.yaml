@@ -12,9 +12,6 @@ PROXY_TYPE : http # http or socks5
 SOURCE_PROXIES: data/proxies.txt
 OUTPUT_PROXIES: data/proxies_success.txt
 
-# Путь до rpc
-#RPC_URLS : data/urls.txt
-
 #Таймаут для соединений
 TIMEOUT: 10
 
