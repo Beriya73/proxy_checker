@@ -3,17 +3,35 @@ import sys
 from loguru import logger
 from typing import List
 from src.data_class import ProxyResult
-
+from src.mixins import sanitize_proxy,console_sanitizer
 
 from src.mixins import ProxyChecker,split_results,save_split_results,statistics_output
 
 logger.remove()
-log_path = "logs/proxy_checker.log"
-logger.add(sys.stderr,
-           format="<green>{time:HH:mm:ss}</green> | <level>{level: <8}</level> | <level>{message}</level>")
-logger.add(log_path, format="{time:HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}", level="DEBUG",
-           rotation="10 MB")
+logger.add(
+    sys.stderr,
+    filter=console_sanitizer,
+    format="<green>{time:HH:mm:ss}</green> | <level>{level: <8}</level> | <level>{extra[sanitized_message]}</level>"
+    )
 
+log_path = "logs/proxy_checker.log"
+logger.add(
+    log_path,
+    format="{time:HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}",
+    level="DEBUG",
+    rotation="10 MB",
+    encoding="utf-8"
+    )
+
+log_path = "logs/proxy_checker.log"
+logger.add(
+    log_path,
+    # Здесь фильтр не нужен, используем оригинальное {message} со всеми данными
+    format="{time:HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}",
+    level="DEBUG",
+    rotation="10 MB",
+    encoding="utf-8" # Рекомендуется всегда указывать кодировку
+    )
 
 
 async def main():

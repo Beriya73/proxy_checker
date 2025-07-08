@@ -9,7 +9,7 @@ from src.loaders import PROXIES
 from src.data_class import ProxyResult
 from typing import List, Dict, Optional
 from .error import *
-
+import re
 IP_API_URL = "http://ip-api.com/json/?fields=123417"
 
 
@@ -136,3 +136,12 @@ def save_split_results(parse_results: Dict):
         with open(CONFIG.get("FAILED_PROXY"), 'w', encoding='utf-8') as f:
             for proxy_obj in parse_results.get("Failed"):
                 f.write(f"{proxy_obj.proxy}\n")
+
+def sanitize_proxy(message: str) -> str:
+    pattern = re.compile(r"([^:]+):([^@]+)(@.+)")
+    sanitized_message = pattern.sub(r"\1:***\3", message)
+    return sanitized_message
+
+def console_sanitizer(record) -> bool:
+    record["extra"]["sanitized_message"] = sanitize_proxy(record["message"])
+    return True
