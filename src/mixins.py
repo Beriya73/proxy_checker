@@ -138,7 +138,7 @@ def save_split_results(parse_results: Dict):
                 f.write(f"{proxy_obj.proxy}\n")
     else:
         with open(CONFIG.get("FAILED_PROXY"), 'w', encoding='utf-8') as f:
-            f.write(f"EMPTY\n")
+            f.write(f"\n")
 
 
 def sanitize_proxy(message: str) -> str:
