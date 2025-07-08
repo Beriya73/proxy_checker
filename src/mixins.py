@@ -137,8 +137,9 @@ def save_split_results(parse_results: Dict):
             for proxy_obj in parse_results.get("Failed"):
                 f.write(f"{proxy_obj.proxy}\n")
 
+
 def sanitize_proxy(message: str) -> str:
-    pattern = re.compile(r"([^:]+):([^@]+)(@.+)")
+    pattern = re.compile(r"([a-zA-Z0-9\-]+):([a-zA-Z0-9]+)(@.+)")
     sanitized_message = pattern.sub(r"\1:***\3", message)
     return sanitized_message
 
