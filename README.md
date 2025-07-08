@@ -33,28 +33,20 @@
 
 ## ⚙️ Использование
 
-Скрипт запускается из командной строки с указанием файла с прокси и типа прокси для проверки.
+1. Скрипт запускается из командной строки настройки берутся из config.yaml.
+### Формат команды
 
+```bash
+python proxy_checker.py
+```
+
+
+2.Скрипт запускается из командной строки с указанием аргументов.
 ### Формат команды
 
 ```bash
 python proxy_checker.py source_proxy_file output_proxy_file --proxy <тип_прокси> [другие_аргументы]
 ```
-
-Check proxy and save results to file
-
-positional arguments:
-  source_proxy_file     Proxy input file
-  output_proxy_file     Proxy output file
-
-options:
-  -h, --help            show this help message and exit
-  -r REQUESTS,      --requests REQUESTS
-                        number of simultaneous requests(default: 10)
-  -p {http,socks5}, --proxy_type {http,socks5}
-                        proxy type(default: http)
-  -t TIMEOUT, --timeout TIMEOUT
-                        timeout for request(default: 10s))
 
 
 ### Пример файла с прокси (`proxies.txt`)
