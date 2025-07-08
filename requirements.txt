@@ -1,0 +1,5 @@
+PyYAML~=6.0.2
+aiohttp~=3.12.13
+aiohttp_socks~=0.10.1
+loguru~=0.7.3
+pydantic~=2.11.7
