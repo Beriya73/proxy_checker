@@ -22,7 +22,7 @@ class ProxyChecker:
         self.semaphore = asyncio.Semaphore(self.concurrency_limit)
         logger.success(
             f"ProxyChecker initialized. Loaded {len(PROXIES)} proxies. Concurrency limit: {self.concurrency_limit}."
-            f" Proxy type: {CONFIG.get("PROXY_TYPE")}")
+            f" Proxy type: {CONFIG.get('PROXY_TYPE')}")
         self.result: Optional[ProxyResult] = None
 
     @retry_async(delay=1.0)
