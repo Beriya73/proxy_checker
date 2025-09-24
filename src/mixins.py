@@ -128,14 +128,14 @@ def save_split_results(parse_results: Dict):
         try:
             with open(CONFIG.get("OUTPUT_PROXIES"), 'w', encoding='utf-8') as f:
                 for proxy_obj in parse_results.get("Working"):
-                    f.write(f"{proxy_obj.proxy}\n")
+                    f.write(f"PROXY_TYPE://{proxy_obj.proxy}\n")
         except Exception as e:
             logger.error(f"Failed to save {e}")
     # 5. Записываем нерабочие прокси в proxies_failed.txt
     if parse_results.get("Failed"):
         with open(CONFIG.get("FAILED_PROXY"), 'w', encoding='utf-8') as f:
             for proxy_obj in parse_results.get("Failed"):
-                f.write(f"{proxy_obj.proxy}\n")
+                f.write(f"PROXY_TYPE://{proxy_obj.proxy}\n")
     else:
         with open(CONFIG.get("FAILED_PROXY"), 'w', encoding='utf-8') as f:
             f.write(f"\n")
